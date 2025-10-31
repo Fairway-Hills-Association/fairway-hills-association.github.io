@@ -43,26 +43,77 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(45, 80, 22, 0.85), rgba(45, 80, 22, 0.85)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234a7c2b" width="1200" height="600"/></svg>');
-            background-size: cover;
-            background-position: center;
-            padding: 3rem 1rem;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+            padding: 3rem 2rem;
             margin-bottom: 2rem;
             border-radius: 8px;
-            color: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
 
-        .hero h2 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+        .hero-content h2 {
+            color: #2d5016;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: #fff;
-            opacity: 0.95;
-            margin-bottom: 0.5rem;
+        .hero-content h2::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4a7c2b, transparent);
+            margin-top: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+        }
+
+        .hero-content p:first-of-type {
+            font-size: 1.25rem;
+            color: #2d5016;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(45, 80, 22, 0.15);
+            max-width: 250px;
+            justify-self: end;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-image {
+                order: -1;
+                max-width: 200px;
+                justify-self: center;
+                transform: rotate(0deg);
+            }
         }
 
         .photo-gallery {
@@ -226,25 +277,25 @@
 </head>
 <body>
     <header>
-        <h1>Fairway Hills Association</h1>
-        <p>A Certified Wildlife Habitat Community</p>
-        <p>215 NW Fairway Hills Glen, Lake City, FL 32055</p>
+        <h1>Fairway Hills Association, Inc.</h1>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=215+NW+Fairway+Hills+Glen+Lake+City+FL+32055" target="_blank" style="color: white; text-decoration: underline; opacity: 0.95;">215 NW Fairway Hills Glen, Lake City, FL 32055</a></p>
     </header>
 
     <div class="container">
         <div class="hero">
-            <h2>Welcome to Fairway Hills</h2>
-            <p>A private condominium community in beautiful Lake City, Florida</p>
-            <p>79 residences nestled in natural surroundings with pool, tennis courts, and common areas</p>
+            <div class="hero-content">
+                <h2>Welcome to Fairway Hills</h2>
+                <p>A private condominium community in beautiful Lake City, Florida</p>
+                <p>25 residences nestled in natural surroundings with pool and tennis court</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/welcome.jpg" alt="Fairway Hills main entrance">
+            </div>
         </div>
 
         <section class="section">
             <h2>🏘️ Our Community</h2>
             <div class="photo-gallery">
-                <div class="photo-card">
-                    <img src="images/welcome.jpg" alt="Fairway Hills welcome sign">
-                    <div class="caption">Main entrance to Fairway Hills - A Private Community</div>
-                </div>
                 <div class="photo-card">
                     <img src="images/aerial-view.webp" alt="Aerial view of Fairway Hills">
                     <div class="caption">Fairway Hills nestled among mature trees and natural landscapes</div>
@@ -255,7 +306,7 @@
                 </div>
                 <div class="photo-card">
                     <img src="images/tree-lined-streets.webp" alt="Tree-lined streets">
-                    <div class="caption">Peaceful walkways throughout the certified wildlife habitat</div>
+                    <div class="caption">Private road entrance through mature oak trees</div>
                 </div>
             </div>
         </section>
@@ -270,14 +321,6 @@
                 <div class="document-card">
                     <h3>Tennis Court</h3>
                     <p>Available for resident use</p>
-                </div>
-                <div class="document-card">
-                    <h3>Commons Building</h3>
-                    <p>Recreation room and facilities</p>
-                </div>
-                <div class="document-card">
-                    <h3>Guest Suites</h3>
-                    <p>Available for rental by residents</p>
                 </div>
             </div>
         </section>
@@ -316,66 +359,67 @@
             <h2>📄 Official Documents & Compliance</h2>
             <p>As required by Florida law, the following governing documents and records are publicly available:</p>
             
-          <div class="document-grid">
-    <div class="document-card">
-        <a href="documents/declaration-of-condominium.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-            <h3>Declaration of Condominium</h3>
-            <p>Original founding document filed 1974, establishing Fairway Hills Association</p>
-            <span class="badge">Legal Document</span>
-        </a>
-    </div>
+            <div class="document-grid">
+                <div class="document-card">
+                    <a href="documents/declaration-of-condominium.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h3>Declaration of Condominium</h3>
+                        <p>Original founding document filed 1974, establishing Fairway Hills Association</p>
+                        <span class="badge">Legal Document</span>
+                    </a>
+                </div>
 
-    <div class="document-card">
-        <a href="documents/articles-bylaws.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-            <h3>Articles of Incorporation & Bylaws</h3>
-            <p>Florida corporation documents and governing rules for Fairway Hills Association, Inc.</p>
-            <span class="badge">Corporate</span>
-        </a>
-    </div>
+                <div class="document-card">
+                    <a href="documents/articles-bylaws.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h3>Articles of Incorporation & Bylaws</h3>
+                        <p>Florida corporation documents and governing rules for Fairway Hills Association, Inc.</p>
+                        <span class="badge">Corporate</span>
+                    </a>
+                </div>
 
-    <div class="document-card">
-        <a href="documents/rules-and-regulations.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-            <h3>Rules & Regulations</h3>
-            <p>Current community rules for residents and owners</p>
-            <span class="badge">Required Reading</span>
-        </a>
-    </div>
+                <div class="document-card">
+                    <a href="documents/rules-and-regulations.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h3>Rules & Regulations</h3>
+                        <p>Current community rules for residents and owners</p>
+                        <span class="badge">Required Reading</span>
+                    </a>
+                </div>
 
-    <div class="document-card">
-        <a href="documents/fha-pool-rules.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-            <h3>Pool Rules</h3>
-            <p>Swimming pool regulations and hours of operation</p>
-            <span class="badge">Amenity Rules</span>
-        </a>
-    </div>
+                <div class="document-card">
+                    <a href="documents/fha-pool-rules.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h3>Pool Rules</h3>
+                        <p>Swimming pool regulations and hours of operation</p>
+                        <span class="badge">Amenity Rules</span>
+                    </a>
+                </div>
 
-    <div class="document-card">
-        <a href="documents/site-and-floor-plans.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-            <h3>Site Maps & Floor Plans</h3>
-            <p>Property layout, unit locations, and architectural plans</p>
-            <span class="badge">Reference</span>
-        </a>
-    </div>
+                <div class="document-card">
+                    <a href="documents/site-and-floor-plans.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h3>Site Maps & Floor Plans</h3>
+                        <p>Property layout, unit locations, and architectural plans</p>
+                        <span class="badge">Reference</span>
+                    </a>
+                </div>
 
-    <div class="document-card">
-        <a href="documents/fha-annual-report.pdf" target="_blank" style="text-decoration: none; color: inherit;">
-            <h3>Annual Report</h3>
-            <p>Filed with Florida Department of State</p>
-            <span class="badge">Financial</span>
-        </a>
-    </div>
+                <div class="document-card">
+                    <a href="documents/fha-annual-report.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                        <h3>Annual Report</h3>
+                        <p>Filed with Florida Department of State</p>
+                        <span class="badge">Financial</span>
+                    </a>
+                </div>
 
-    <div class="document-card">
-        <h3>Meeting Minutes</h3>
-        <p>Board meeting records and resident meeting notes</p>
-        <span class="badge">Coming Soon</span>
-    </div>
-</div>
+                <div class="document-card">
+                    <h3>Meeting Minutes</h3>
+                    <p>Board meeting records and resident meeting notes</p>
+                    <span class="badge">Coming Soon</span>
+                </div>
+            </div>
         </section>
 
         <div class="contact-info">
             <h3>Contact Information</h3>
             <p><strong>Registered Agent:</strong> Sherman Reed</p>
+            <p><strong>Phone:</strong> 904-651-0950</p>
             <p><strong>Address:</strong> 215 NW Fairway Hills Glen, Unit #4, Lake City, FL 32055</p>
             <p><strong>Federal EIN:</strong> 59-1786066</p>
             <p><strong>Entity Number:</strong> 729982</p>
